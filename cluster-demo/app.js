@@ -31,12 +31,12 @@ if (cluster.isMaster) {
   app.use(parser.urlencoded({ extended: false }));
 
   app.all('/*', function (request, response) {
-    response.send('process ' + process.pid + ' says hello!')
+    response.send('Response from process ' + process.pid)
       .end();
   });
 
-  const server = app.listen(80, function () {
-    console.log('Process ' + process.pid + ' is listening to all incoming requests');
-    console.log('http://' + os.hostname() + ':' + server.address().port);
+  app.listen(80, function () {
+    console.log('Process ' + process.pid + ' is listening');
+    //console.log('http://' + os.hostname() + ':' + server.address().port);
   });
 }
